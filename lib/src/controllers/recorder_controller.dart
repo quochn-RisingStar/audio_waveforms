@@ -24,6 +24,8 @@ class RecorderController extends ChangeNotifier {
 
   int? bitRate;
 
+  double decibelLevel = 0.0;
+
   /// Db we get from native is too high so in Android it the value is
   /// subtracted and in IOS value added.
   @Deprecated(
@@ -377,6 +379,7 @@ class RecorderController extends ChangeNotifier {
         } else {
           _normalise(db);
         }
+        decibelLevel = db;
         notifyListeners();
       },
     );
